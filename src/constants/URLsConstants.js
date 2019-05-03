@@ -14,7 +14,9 @@ function updateCacheId() {
 
 // tree APIs
 const tree = {
-  getTree: () => `mocks/algo.json?${cacheId}`,
+  // mocks/algo.json
+  // request from a GitHub gist
+  getTree: () => `https://gist.githubusercontent.com/unbug/1c8e9965f4ae1daeb710096bb007d260/raw/146f60a89c83e11b80d3c5d277d8ee2797b12f02/algo.json?${cacheId}`,
 }
 
 export default {
