@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities*/
 import React, { useEffect, useState } from 'react';
-import { Button, Grid, Icon, Input, Label, List, Modal, Popup, Segment } from 'semantic-ui-react';
+import { Button, Grid, Icon, Input, Label, List, Modal, Popup, Segment, Message } from 'semantic-ui-react';
 import ErrorModel from "../../models/ErrorModel";
 import * as TreeHandler from './../../utils/TreeHandler';
 
@@ -44,9 +44,10 @@ function TreeColumn(props) {
                 trigger={
                   <Label key={key.id} style={{ margin: '0.3rem 0.2rem 0 0' }} color={color} circular
                     className={`tree-grid__label-name ${key.isNew ? 'tree-grid__label-name--new' : ''} pointer-link`}
+                    title={isLeaf ? '' : `Children: ${key.children.length}`}
                     onClick={() => handleLabelClick(key)}>
-                    {isLeaf ? '' : <Icon name='tags' />}
-                    {key.name} {isLeaf ? '' : `(${key.children.length})`}
+                    {isLeaf ? '' : <Icon name='code branch' />}
+                    {key.name}
                   </Label>
                 }
                 className='tree-grid__label-popup'
@@ -75,7 +76,7 @@ function TreeColumn(props) {
     <Grid.Column width={2} style={{ padding: 0, paddingRight: '0.4rem' }}>
       <Label circular floating
         color='gray' className='pointer-link'
-        onClick={() => props.onLabelAdd(props.node)}>+</Label>
+        onClick={() => props.onLabelAdd(props.node)}><Icon name='plus' style={{ margin: '0' }} /></Label>
       <div style={{ textAlign: 'center' }}>{props.childs ? props.childs.length : 0}</div>
       <Segment className='tree-grid__col' style={{ padding: '0.2rem' }}>
         {renderLabels()}
@@ -92,7 +93,7 @@ export default function TreeGrid(props) {
   const [editNode, setEditNode] = useState(null);
 
   useEffect(() => {
-    if (!columns.length && props.tree) {
+    if (props.tree) {
       setColumns([props.tree]);
     }
   }, [props.tree]);
@@ -223,6 +224,8 @@ export default function TreeGrid(props) {
         <Button size='medium' circular icon='cloud upload'
           color={props.loadedFromLocal ? 'green' : (props.localAvailable ? 'red' : 'gray')}
           onClick={props.onLoadFromLocal} title='Load from local' />
+        <Button size='medium' circular icon='sync'
+          onClick={props.onLoadFromCloud} title='Load from cloud' />
         <Button size='medium' circular icon='cloud download'
           onClick={props.onDownload} title='Download JSON' />
       </div>
@@ -237,6 +240,7 @@ export default function TreeGrid(props) {
             onChange={handleEditModalInputChange}
             onKeyDown={handleEditModalInputKeydown}
           />
+          <Message size='tiny' color='green'>Add, edit and remove will be automatically save to local.</Message>
         </Modal.Content>
         <Modal.Actions>
           <Button positive icon='checkmark' labelPosition='right' content='Done' onClick={handleEditModalDone} />

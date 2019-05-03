@@ -19,7 +19,7 @@ class TreeData {
       let res = await fetch(url);
       res = await res.json();
       if (res) {
-        const data = TreeHandler.serializeTree(res);
+        const data = TreeHandler.sortTree(TreeHandler.serializeTree(res));
         !nocache && this._store.save(cacheId, data);
         return data;
       } else {

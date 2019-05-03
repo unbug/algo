@@ -157,7 +157,7 @@ let chart = (data, collapse) => {
 
 export default function TreeHorizontal(props) {
   const bodyEl = useRef(null);
-  let collapse = true;
+  let collapse = false;
   let filterData = null;
   let svg = null;
 

@@ -26,7 +26,9 @@ exports.serviceWorker = {
   included: [ // cache then network, url must start with it's host
     '"fonts.googleapis.com"',
     '"fonts.gstatic.com"',
-    '"github.hulu.com"',
+    '"github.com"',
+    '"github.io"',
+    '"user-images.githubusercontent.com"',
   ],
   networkOnly: [ // network falling back to cache, url|path|etc must included in "included"
   ],

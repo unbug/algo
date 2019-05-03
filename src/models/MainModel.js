@@ -10,10 +10,11 @@ const TREE_KEY = `${AppModel.appName}_tree_store_key`;
 class MainModel extends BaseModel {
   constructor() {
     super();
+    const tree = LocalStorage.getItem(TREE_KEY);
     this._data = {
-      tree: null,
-      loadedFromLocal: false,
-      localAvailable: LocalStorage.getItem(TREE_KEY) || false,
+      tree: tree,
+      loadedFromLocal: !!tree,
+      localAvailable: !!tree,
       selectedNode: null,
     };
   }
@@ -22,6 +23,7 @@ class MainModel extends BaseModel {
     const data = await TreeData.requestTree(true /*no cache*/);
     if (data) {
       this.update({
+        loadedFromLocal: false,
         tree: data
       });
     }
@@ -32,7 +34,7 @@ class MainModel extends BaseModel {
     if (data) {
       this.update({
         loadedFromLocal: true,
-        tree: data
+        tree: TreeHandler.sortTree(TreeHandler.serializeTree(data))
       });
     }
   }

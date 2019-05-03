@@ -8,6 +8,7 @@ import RouterConstants from '../constants/RouterConstants';
 import TreeGrid from '../components/main-view/TreeGrid';
 import TreeHorizontal from '../components/main-view/TreeHorizontal';
 import TreeRadial from '../components/main-view/TreeRadial';
+import URLsConstants from '../constants/URLsConstants';
 
 export default class MainView extends React.Component {
 
@@ -36,7 +37,7 @@ export default class MainView extends React.Component {
 
   componentDidMount() {
     this.onRouteChanged();
-    MainModel.requestTree();
+    !this.state.tree ? MainModel.requestTree() : MainModel.loadFromLocal();
   }
 
   onRouteChanged() {
@@ -48,7 +49,6 @@ export default class MainView extends React.Component {
     if (!newState.type) {
       newState.type = 'horizontal';
       this.setState(newState);
-      this.gotoPage('');
       return;
     }
     // update arrayTree for radial
@@ -107,6 +107,11 @@ export default class MainView extends React.Component {
     MainModel.loadFromLocal();
   }
 
+  handleLoadFromCloud = () => {
+    URLsConstants.updateCacheId();
+    MainModel.requestTree();
+  }
+
   handleDownload = (type) => {
     if (type == 'csv') {
       MainModel.downloadCSV();
@@ -134,6 +139,7 @@ export default class MainView extends React.Component {
           onDeleteNode={this.handleDeleteNode}
           onDownload={this.handleDownload}
           onSaveToLocal={this.handleSaveToLocal}
+          onLoadFromCloud={this.handleLoadFromCloud}
           onLoadFromLocal={this.handleLoadFromLocal} />
         <TreeRadial
           active={this.state.type === 'radial'}
@@ -148,25 +154,31 @@ export default class MainView extends React.Component {
         <div className='nav-bar'>
           <Menu pointing secondary>
             <Menu.Item
+              name='horizontal'
+              active={this.state.type === 'horizontal'}
+              as='a' href='#/'>
+              <Icon name='home' />
+              <span>Home</span>
+            </Menu.Item>
+            <Menu.Item
               name='radial'
               active={this.state.type === 'radial'}
               as='a' href='#/type=radial&query=6'>
-              <Icon name='circle outline' />
-              <span>Radial</span>
-            </Menu.Item>
-            <Menu.Item
-              name='horizontal'
-              active={this.state.type === 'horizontal'}
-              as='a' href='#/type=horizontal&query='>
               <Icon name='code branch' />
-              <span>Horizontal</span>
+              <span>Radial</span>
             </Menu.Item>
             <Menu.Item
               name='grid'
               active={this.state.type === 'grid'}
               as='a' href='#/type=grid&query='>
-              <Icon name='grid layout' />
+              <Icon name='pencil' />
               <span>Editor</span>
+            </Menu.Item>
+            <Menu.Item
+              name='grid'
+              as='a' href='https://github.com/unbug/algo' target='_blank' rel='noopener noreferrer'>
+              <Icon name='github alternate' />
+              <span>GitHub</span>
             </Menu.Item>
           </Menu>
         </div>
