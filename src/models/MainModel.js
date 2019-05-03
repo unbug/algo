@@ -44,6 +44,7 @@ class MainModel extends BaseModel {
       LocalStorage.setItem(TREE_KEY, this.tree);
       this.update({
         tree: this.tree,
+        loadedFromLocal: true,
         localAvailable: true
       });
     }

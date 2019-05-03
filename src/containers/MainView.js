@@ -55,7 +55,7 @@ export default class MainView extends React.Component {
     if (/radial/ig.test(type) && this.state.query != query) {
       newState.query = query;
       newState.arrayTree = MainModel.getArrayTree(query);
-      newState.standardTree2 = MainModel.getStandardTree(query || 6);
+      newState.standardTree2 = MainModel.getStandardTree(query || 20);
     }
     this.setState(newState);
   }
@@ -76,10 +76,10 @@ export default class MainView extends React.Component {
         loadedFromLocal: MainModel.loadedFromLocal,
         localAvailable: MainModel.localAvailable,
         tree: MainModel.tree,
-        arrayTree: MainModel.getArrayTree(this.state.query || 10),
+        arrayTree: MainModel.getArrayTree(this.state.query || 20),
         filterTags: MainModel.getArrayTree(),
         standardTree: MainModel.getStandardTree(),
-        standardTree2: MainModel.getStandardTree(this.state.query || 10),
+        standardTree2: MainModel.getStandardTree(this.state.query || 20),
       });
     }
   }
@@ -163,7 +163,7 @@ export default class MainView extends React.Component {
             <Menu.Item
               name='radial'
               active={this.state.type === 'radial'}
-              as='a' href='#/type=radial&query=6'>
+              as='a' href='#/type=radial&query=20'>
               <Icon name='code branch' />
               <span>Radial</span>
             </Menu.Item>

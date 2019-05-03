@@ -221,11 +221,14 @@ export default function TreeGrid(props) {
         onLabelEdit={handleLabelEdit} />
       )}
       <div className='menu-bar' style={{ padding: 0 }}>
+        <Button size='medium' circular icon='sync'
+          onClick={props.onLoadFromCloud} title='Load from cloud' />
+        <Button size='medium' circular icon='save'
+          color={props.loadedFromLocal ? 'green' : (props.localAvailable ? 'red' : 'gray')}
+          onClick={props.onSaveToLocal} title='Save to local' />
         <Button size='medium' circular icon='cloud upload'
           color={props.loadedFromLocal ? 'green' : (props.localAvailable ? 'red' : 'gray')}
           onClick={props.onLoadFromLocal} title='Load from local' />
-        <Button size='medium' circular icon='sync'
-          onClick={props.onLoadFromCloud} title='Load from cloud' />
         <Button size='medium' circular icon='cloud download'
           onClick={props.onDownload} title='Download JSON' />
       </div>
