@@ -9,16 +9,488 @@
       "parentId": "ed564832",
       "children": [
         {
+          "name": "Graph",
+          "id": "4af64689",
+          "parentId": "7c5581e1",
+          "children": []
+        },
+        {
+          "name": "Heap",
+          "id": "eeaa16a6",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "ADT",
+              "id": "61689c78",
+              "parentId": "eeaa16a6",
+              "children": [
+                {
+                  "name": "right(index)",
+                  "id": "6cf41af0",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "left(index)",
+                  "id": "0e93f1bf",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "parent(index)",
+                  "id": "bd77e560",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "siftDown(index)",
+                  "id": "d0cf2b07",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "siftUp(index)",
+                  "id": "8644ce2f",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "heapify(array)",
+                  "id": "cd4de463",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "replace(index)",
+                  "id": "be817ed4",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "sort()",
+                  "id": "3a247804",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "remove()",
+                  "id": "c5add003",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "extratMax()",
+                  "id": "38f7cd92",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "findMax()",
+                  "id": "9eb3272d",
+                  "parentId": "61689c78",
+                  "children": []
+                },
+                {
+                  "name": "insert(node)",
+                  "id": "af2e2376",
+                  "parentId": "61689c78",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Trie",
+          "id": "9b67c11e",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "ADT",
+              "id": "357e6c05",
+              "parentId": "9b67c11e",
+              "children": [
+                {
+                  "name": "isPrefix(val)",
+                  "id": "e079833e",
+                  "parentId": "357e6c05",
+                  "children": []
+                },
+                {
+                  "name": "contains(val)",
+                  "id": "51cf19d1",
+                  "parentId": "357e6c05",
+                  "children": []
+                },
+                {
+                  "name": "isWord(val)",
+                  "id": "f5203233",
+                  "parentId": "357e6c05",
+                  "children": []
+                },
+                {
+                  "name": "add(val)",
+                  "id": "9f32d1c2",
+                  "parentId": "357e6c05",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Linked list",
+          "id": "e64b4ebc",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "ADT",
+              "id": "74dfd885",
+              "parentId": "e64b4ebc",
+              "children": [
+                {
+                  "name": "isEmpty()",
+                  "id": "6d6210ee",
+                  "parentId": "74dfd885",
+                  "children": []
+                },
+                {
+                  "name": "has(val)",
+                  "id": "d8b7c1ce",
+                  "parentId": "74dfd885",
+                  "children": []
+                },
+                {
+                  "name": "remove(val)",
+                  "id": "774937f8",
+                  "parentId": "74dfd885",
+                  "children": []
+                },
+                {
+                  "name": "getAt(index)",
+                  "id": "f7ee847d",
+                  "parentId": "74dfd885",
+                  "children": []
+                },
+                {
+                  "name": "addAt(index, val)",
+                  "id": "41867a92",
+                  "parentId": "74dfd885",
+                  "children": []
+                },
+                {
+                  "name": "tail()",
+                  "id": "b3724450",
+                  "parentId": "74dfd885",
+                  "children": []
+                },
+                {
+                  "name": "head()",
+                  "id": "ba7a18b6",
+                  "parentId": "74dfd885",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hash Table",
+          "id": "326abf60",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "ADT",
+              "id": "20652b22",
+              "parentId": "326abf60",
+              "children": [
+                {
+                  "name": "lookup(val)",
+                  "id": "6c892992",
+                  "parentId": "20652b22",
+                  "children": []
+                },
+                {
+                  "name": "remove(val)",
+                  "id": "ba2a354b",
+                  "parentId": "20652b22",
+                  "children": []
+                },
+                {
+                  "name": "add(val)",
+                  "id": "936bad3b",
+                  "parentId": "20652b22",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Map",
+          "id": "65fb8eda",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "ADT",
+              "id": "8ac1bf05",
+              "parentId": "65fb8eda",
+              "children": [
+                {
+                  "name": "size()",
+                  "id": "b5da67b9",
+                  "parentId": "8ac1bf05",
+                  "children": []
+                },
+                {
+                  "name": "clear()",
+                  "id": "2fe697f6",
+                  "parentId": "8ac1bf05",
+                  "children": []
+                },
+                {
+                  "name": "delete(key)",
+                  "id": "a0a80c1a",
+                  "parentId": "8ac1bf05",
+                  "children": []
+                },
+                {
+                  "name": "has(key)",
+                  "id": "7ae0a91d",
+                  "parentId": "8ac1bf05",
+                  "children": []
+                },
+                {
+                  "name": "get(key)",
+                  "id": "5285346c",
+                  "parentId": "8ac1bf05",
+                  "children": []
+                },
+                {
+                  "name": "set(key, val)",
+                  "id": "e0dcd8d9",
+                  "parentId": "8ac1bf05",
+                  "children": []
+                },
+                {
+                  "name": "collection()",
+                  "id": "bfd29420",
+                  "parentId": "8ac1bf05",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Binary search tree",
+          "id": "9e3a8dce",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "ADT",
+              "id": "7ab0e019",
+              "parentId": "9e3a8dce",
+              "children": [
+                {
+                  "name": "maxNode()",
+                  "id": "fb0b4758",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "minNode()",
+                  "id": "ab9d0e20",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "maxHeight()",
+                  "id": "e41cccec",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "minHeight()",
+                  "id": "d3e8affb",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "isBlance()",
+                  "id": "3a885437",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "levelOrder()",
+                  "id": "c3e9fc33",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "postOrder()",
+                  "id": "a6527274",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "preOrder()",
+                  "id": "c4fdf7a0",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "inOrder()",
+                  "id": "f289d6a0",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "delete(val)",
+                  "id": "efa16827",
+                  "parentId": "7ab0e019",
+                  "children": []
+                },
+                {
+                  "name": "add(val)",
+                  "id": "e156efa9",
+                  "parentId": "7ab0e019",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Set",
+          "id": "526ffd8b",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "ADT",
+              "id": "0c8c64dc",
+              "parentId": "526ffd8b",
+              "children": [
+                {
+                  "name": "subset(subSet)",
+                  "id": "ae8b3786",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "difference(anotherSet)",
+                  "id": "6331e6a3",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "intersection(anotherSet)",
+                  "id": "9b61360f",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "union(anotherSet)",
+                  "id": "d928dc81",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "isEmpty()",
+                  "id": "222cf019",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "size()",
+                  "id": "dec56123",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "values()",
+                  "id": "97755374",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "has(val)",
+                  "id": "d88031c8",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "remove(val)",
+                  "id": "595882af",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                },
+                {
+                  "name": "add(val)",
+                  "id": "01fe57b1",
+                  "parentId": "0c8c64dc",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Queue",
+          "id": "626bea25",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "FIFO",
+              "id": "2f618974",
+              "parentId": "626bea25",
+              "children": []
+            },
+            {
+              "name": "ADT",
+              "id": "158e4d51",
+              "parentId": "626bea25",
+              "children": [
+                {
+                  "name": "isEmpty()",
+                  "id": "05d21f9e",
+                  "parentId": "158e4d51",
+                  "children": []
+                },
+                {
+                  "name": "size()",
+                  "id": "1feab00d",
+                  "parentId": "158e4d51",
+                  "children": []
+                },
+                {
+                  "name": "front()",
+                  "id": "7b79ed2a",
+                  "parentId": "158e4d51",
+                  "children": []
+                },
+                {
+                  "name": "dequeue()",
+                  "id": "4ee74feb",
+                  "parentId": "158e4d51",
+                  "children": []
+                },
+                {
+                  "name": "enqueue()",
+                  "id": "6a4c9630",
+                  "parentId": "158e4d51",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "name": "Stack",
           "id": "5718f5f1",
           "parentId": "7c5581e1",
           "children": [
-            {
-              "name": "LIFO",
-              "id": "43bbd91b",
-              "parentId": "5718f5f1",
-              "children": []
-            },
             {
               "name": "ADT",
               "id": "448d0124",
@@ -43,6 +515,12 @@
                   "children": []
                 }
               ]
+            },
+            {
+              "name": "LIFO",
+              "id": "43bbd91b",
+              "parentId": "5718f5f1",
+              "children": []
             }
           ]
         }
