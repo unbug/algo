@@ -4,33 +4,53 @@
   "parentId": "",
   "children": [
     {
-      "name": "test5",
-      "id": "c8ac5b9f",
+      "name": "Data Structures",
+      "id": "7c5581e1",
       "parentId": "ed564832",
       "children": [
         {
-          "name": "1111",
-          "id": "1f6bc4ed",
-          "parentId": "c8ac5b9f",
-          "children": []
+          "name": "Stack",
+          "id": "5718f5f1",
+          "parentId": "7c5581e1",
+          "children": [
+            {
+              "name": "LIFO",
+              "id": "43bbd91b",
+              "parentId": "5718f5f1",
+              "children": []
+            },
+            {
+              "name": "ADT",
+              "id": "448d0124",
+              "parentId": "5718f5f1",
+              "children": [
+                {
+                  "name": "peek()",
+                  "id": "9112f71e",
+                  "parentId": "448d0124",
+                  "children": []
+                },
+                {
+                  "name": "pop()",
+                  "id": "9d83bebd",
+                  "parentId": "448d0124",
+                  "children": []
+                },
+                {
+                  "name": "push(val)",
+                  "id": "fd8f1fd6",
+                  "parentId": "448d0124",
+                  "children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
-      "name": "test3",
+      "name": "Algorithms",
       "id": "27ab4306",
-      "parentId": "ed564832",
-      "children": []
-    },
-    {
-      "name": "test2",
-      "id": "875d44e2",
-      "parentId": "ed564832",
-      "children": []
-    },
-    {
-      "name": "test1",
-      "id": "cb9de15f",
       "parentId": "ed564832",
       "children": []
     }
