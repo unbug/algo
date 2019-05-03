@@ -1,0 +1,62 @@
+*,
+:after,
+:before {
+  box-sizing: border-box; /*size not include padding and margin*/
+}
+@at-root {
+  .up-first {
+    &::first-letter {
+      text-transform: uppercase
+    }
+  }
+
+  .pointer-link {
+    cursor: pointer;
+  }
+
+  .dis-selection {
+    user-select: none;
+  }
+
+  .hidden-link {
+    color: #000 !important;
+    &:hover {
+      color: #1e70bf !important;
+    }
+  }
+
+  .filter-popup {
+    position: fixed;
+    z-index: 101;
+    top: 5rem;
+    right: 1rem;
+    box-shadow: $box-shadow;
+  }
+
+  .blank-divider {
+    display: flex;
+    flex: 1;
+  }
+
+  a.header.hidden-link,
+  .ui.list>.item a.header.hidden-link {
+    @extend .hidden-link;
+  }
+
+  .ui.input {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(34,36,38,.15);
+    &:hover {
+      border-color: rgba(0,0,0,.3);
+    }
+    &:focus-within  {
+      border-color: #85b7d9;
+    }
+    transition: border-color .1s ease;
+    input {
+      border: 0;
+      border-radius: 0;
+      padding: 0 0.4rem;
+    }
+  }
+}

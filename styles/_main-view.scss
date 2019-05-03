@@ -1,0 +1,112 @@
+.main-view {
+  padding: 1rem 2rem;
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    .menu {
+      box-shadow: $box-shadow;
+    }
+  }
+
+  .menu-bar {
+    position: fixed;
+    bottom: 8rem;
+    left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    > button {
+      margin-bottom: 0.4rem;
+      box-shadow: $box-shadow;
+    }
+  }
+
+  .tree-grid {
+    &__col {
+      max-height: calc(100vh - 13rem);
+      overflow-y: scroll;
+      border-radius: 0 !important;
+    }
+
+    &__label {
+      &-popup {
+      }
+      &-name {
+        &--new {
+          border-left: 0.4rem solid #21ba45 !important;
+        }
+      }
+      &-remove {
+        display: none;
+        float: left;
+        margin-top: 0.2rem;
+      }
+      &:hover {
+        >.tree-grid__label-remove {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .tree-radial {
+    height: calc(100vh - 12rem);
+    width: calc(100vw - 2rem);
+    overflow: hidden;
+    &__body {
+      height: calc(100vh - 10rem);
+      width: calc(100vw);
+      background: #fff;
+      overflow: scroll;
+    }
+    .link {
+      fill: none;
+      stroke: steelblue;
+    }
+
+    path.felis {
+      stroke: #A3B45E;
+    }
+
+    text.felis {
+      fill: green;
+    }
+
+    .node--internal text {
+      opacity: 0.7;
+    }
+    .node--leaf circle {
+      fill: blue;
+    }
+
+    text {
+      font-size: x-small;
+    }
+
+    circle {
+      fill: steelblue;
+    }
+  }
+
+  .tree-horizontal {
+    margin-bottom: -2rem;
+    overflow: hidden;
+    &__body {
+      padding-top: 1rem;
+      min-height: calc(100vh - 9.5rem);
+      overflow-x: auto;
+    }
+  }
+
+  .tree-filter-bar {
+    position: fixed;
+    width: 30rem;
+    top: 5rem;
+    right: 1rem
+  }
+}

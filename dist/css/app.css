@@ -1,0 +1,213 @@
+/* animation */
+/* color */
+.app {
+  width: 100%;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app *,
+.app :after,
+.app :before {
+  box-sizing: border-box;
+  /*size not include padding and margin*/
+}
+
+.up-first::first-letter {
+  text-transform: uppercase;
+}
+
+.pointer-link {
+  cursor: pointer;
+}
+
+.dis-selection {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.hidden-link, a.header.hidden-link,
+.ui.list > .item a.header.hidden-link {
+  color: #000 !important;
+}
+
+.hidden-link:hover, a.header.hidden-link:hover,
+.ui.list > .item a.header.hidden-link:hover {
+  color: #1e70bf !important;
+}
+
+.filter-popup {
+  position: fixed;
+  z-index: 101;
+  top: 5rem;
+  right: 1rem;
+  box-shadow: #bbbbbb 0px 2px 8px !important;
+}
+
+.blank-divider {
+  display: flex;
+  flex: 1;
+}
+
+.ui.input {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+  transition: border-color .1s ease;
+}
+
+.ui.input:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.ui.input:focus-within {
+  border-color: #85b7d9;
+}
+
+.ui.input input {
+  border: 0;
+  border-radius: 0;
+  padding: 0 0.4rem;
+}
+
+.app img:not([src]) {
+  opacity: 0;
+}
+
+.app .view-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* Avoid the IE 10-11 `min-height` bug. */
+  padding-top: 6rem;
+}
+
+.app .view {
+  flex: 1 0 auto;
+  padding: 0 0 1rem 0;
+}
+
+.app .view-footer {
+  flex-shrink: 0;
+  padding: 1rem;
+}
+
+.app .header-nav .item:before {
+  content: none !important;
+}
+
+.app .main-view {
+  padding: 1rem 2rem;
+}
+
+.app .main-view .nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.app .main-view .nav-bar .menu {
+  box-shadow: #bbbbbb 0px 2px 8px !important;
+}
+
+.app .main-view .menu-bar {
+  position: fixed;
+  bottom: 8rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app .main-view .menu-bar > button {
+  margin-bottom: 0.4rem;
+  box-shadow: #bbbbbb 0px 2px 8px !important;
+}
+
+.app .main-view .tree-grid__col {
+  max-height: calc(100vh - 13rem);
+  overflow-y: scroll;
+  border-radius: 0 !important;
+}
+
+.app .main-view .tree-grid__label-name--new {
+  border-left: 0.4rem solid #21ba45 !important;
+}
+
+.app .main-view .tree-grid__label-remove {
+  display: none;
+  float: left;
+  margin-top: 0.2rem;
+}
+
+.app .main-view .tree-grid__label:hover > .tree-grid__label-remove {
+  display: inline-block;
+}
+
+.app .main-view .tree-radial {
+  height: calc(100vh - 12rem);
+  width: calc(100vw - 2rem);
+  overflow: hidden;
+}
+
+.app .main-view .tree-radial__body {
+  height: calc(100vh - 10rem);
+  width: calc(100vw);
+  background: #fff;
+  overflow: scroll;
+}
+
+.app .main-view .tree-radial .link {
+  fill: none;
+  stroke: steelblue;
+}
+
+.app .main-view .tree-radial path.felis {
+  stroke: #A3B45E;
+}
+
+.app .main-view .tree-radial text.felis {
+  fill: green;
+}
+
+.app .main-view .tree-radial .node--internal text {
+  opacity: 0.7;
+}
+
+.app .main-view .tree-radial .node--leaf circle {
+  fill: blue;
+}
+
+.app .main-view .tree-radial text {
+  font-size: x-small;
+}
+
+.app .main-view .tree-radial circle {
+  fill: steelblue;
+}
+
+.app .main-view .tree-horizontal {
+  margin-bottom: -2rem;
+  overflow: hidden;
+}
+
+.app .main-view .tree-horizontal__body {
+  padding-top: 1rem;
+  min-height: calc(100vh - 9.5rem);
+  overflow-x: auto;
+}
+
+.app .main-view .tree-filter-bar {
+  position: fixed;
+  width: 30rem;
+  top: 5rem;
+  right: 1rem;
+}
+
+/*# sourceMappingURL=../app.css.map */
