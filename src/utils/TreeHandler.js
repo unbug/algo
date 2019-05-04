@@ -28,6 +28,8 @@ export const serializeNode = (node, parent) => {
   if (parent) {
     node.parentId = node.parentId || parent.id || '';
   }
+  node.children = node.children || [];
+  node.description = node.description || '';
   return node;
 }
 
@@ -74,7 +76,8 @@ export const filterTree = (str, node, parent) => {
       id: node.id + '',
       parentId: node.parentId === -1 ? '' : (node.parentId + ''),
       name: 'Algo',
-      children: []
+      children: [],
+      description: node.description || ''
     };
     node.children.forEach(n => filterTree(str, n, newRoot));
     return newRoot;
@@ -84,7 +87,8 @@ export const filterTree = (str, node, parent) => {
       id: node.id + '',
       parentId: node.parentId === -1 ? '' : (node.parentId + ''),
       name: node.name,
-      children: []
+      children: [],
+      description: node.description || ''
     }
     parent.children.push(newNode);
     if (node.children && node.children.length) {
@@ -98,7 +102,8 @@ export const standardizeTree = (node, len) => {
     name: node.name,
     id: node.id,
     parentId: node.parentId || '',
-    children: []
+    children: [],
+    description: node.description || ''
   };
   if (node.children) {
     newNode.children = node.children.slice(0, len || node.children.length).map(s => standardizeTree(s, len));

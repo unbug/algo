@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities*/
 import React, { useEffect, useState } from 'react';
-import { Button, Grid, Icon, Input, Label, List, Modal, Popup, Segment, Message } from 'semantic-ui-react';
+import { Button, Grid, Icon, Input, Label, List, Modal, Popup, Segment, Message, TextArea, Form, Divider } from 'semantic-ui-react';
 import ErrorModel from "../../models/ErrorModel";
 import * as TreeHandler from './../../utils/TreeHandler';
 
@@ -9,12 +9,12 @@ function TreeColumn(props) {
   const [waitToRemove, setWaitToRemove] = useState(null);
   const [removeTimer, setRemoveTimer] = useState(0);
 
-  const handleLabelClick = node => {
+  function handleLabelClick(node) {
     setSelectLabel(node.id);
     props.onLabelClick(node);
   }
 
-  const handleLabelRemove = node => {
+  function handleLabelRemove(node) {
     clearTimeout(removeTimer);
     if (waitToRemove == node.id) {
       props.onLabelRemove(node);
@@ -24,8 +24,22 @@ function TreeColumn(props) {
     }
   }
 
-  const handleLabelEdit = (node, parent) => {
+  function handleLabelEdit(node, parent) {
     props.onLabelEdit(node, parent);
+  }
+
+  function handleDragOver(e) {
+    e.preventDefault();
+  }
+
+  function handleDrag(e, data) {
+    e.dataTransfer.effectAllowed = 'copy';
+    e.dataTransfer.setData('node', JSON.stringify(data));
+  }
+
+  function handleDrop(e) {
+    e.preventDefault();
+    props.onLabelMove(JSON.parse(e.dataTransfer.getData('node')), props.node);
   }
 
   function renderLabels() {
@@ -33,47 +47,45 @@ function TreeColumn(props) {
       return 'No children found.';
     }
     return Array.prototype.map.call(props.childs, (key, idx) => {
-      const color = key.id == selectLabel ? 'black' : 'gray';
+      const selected = key.id == selectLabel;
+      const color = selected ? 'black' : 'gray';
       const isLeaf = !key.children || !key.children.length;
       return (
-        <List.Item key={idx}>
-          <List.Content>
-            <List.Header className='tree-grid__label'>
-              <Popup
-                key={key.id}
-                trigger={
-                  <Label key={key.id} style={{ margin: '0.3rem 0.2rem 0 0' }} color={color} circular
-                    className={`tree-grid__label-name ${key.isNew ? 'tree-grid__label-name--new' : ''} pointer-link`}
-                    title={isLeaf ? '' : `Children: ${key.children.length}`}
-                    onClick={() => handleLabelClick(key)}>
-                    {isLeaf ? '' : <Icon name='code branch' />}
-                    {key.name}
-                  </Label>
-                }
-                className='tree-grid__label-popup'
-                style={{ padding: '0.2rem 0.2rem 0.2rem 0.6rem' }}
-                hoverable={true}
-                position='right center'>
-                <Button size='mini' circular icon='pencil'
-                  color='gray'
-                  title='Edit'
-                  className='tree-grid__label-edit pointer-link'
-                  onClick={() => handleLabelEdit(key, props.node)} />
-                <Button size='mini' circular icon='minus'
-                  color={waitToRemove == key.id ? 'red' : 'gray'}
-                  title='Remove'
-                  className='tree-grid__label-remove pointer-link'
-                  onClick={() => handleLabelRemove(key)} />
-              </Popup>
-            </List.Header>
-          </List.Content>
+        <List.Item key={idx} className='tree-grid__label' draggable={!selected} onDragStart={(e) => handleDrag(e, key)}>
+          <Popup
+            key={key.id}
+            trigger={
+              <Label key={key.id} style={{ margin: '0.3rem 0.2rem 0 0' }} color={color} circular
+                className={`tree-grid__label-name ${key.isNew ? 'tree-grid__label-name--new' : ''} pointer-link`}
+                title={isLeaf ? '' : `Children: ${key.children.length}`}
+                onClick={() => handleLabelClick(key)}>
+                {isLeaf ? '' : <Icon name='code branch' />}
+                {key.name}
+              </Label>
+            }
+            className='tree-grid__label-popup'
+            hoverable={true}
+            position='right center'>
+            <div>{key.description}</div>
+            {!key.description ? '' : <Divider />}
+            <Button size='mini' circular icon='pencil'
+              color='gray'
+              title='Edit'
+              className='tree-grid__label-edit pointer-link'
+              onClick={() => handleLabelEdit(key, props.node)} />
+            <Button size='mini' circular icon='minus'
+              color={waitToRemove == key.id ? 'red' : 'gray'}
+              title='Remove'
+              className='tree-grid__label-remove pointer-link'
+              onClick={() => handleLabelRemove(key)} />
+          </Popup>
         </List.Item>
       );
     });
   }
 
   return (
-    <Grid.Column width={2} style={{ padding: 0, paddingRight: '0.4rem' }}>
+    <Grid.Column width={2} style={{ padding: 0, paddingRight: '0.4rem' }} onDragOver={handleDragOver} onDrop={handleDrop}>
       <Label circular floating
         color='gray' className='pointer-link'
         onClick={() => props.onLabelAdd(props.node)}><Icon name='plus' style={{ margin: '0' }} /></Label>
@@ -89,6 +101,7 @@ export default function TreeGrid(props) {
   const [columns, setColumns] = useState([]);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [editName, setEditName] = useState('');
+  const [editDesc, setEditDesc] = useState('');
   const [parentNode, setParentNode] = useState(null);
   const [editNode, setEditNode] = useState(null);
 
@@ -101,18 +114,21 @@ export default function TreeGrid(props) {
   function resetFormInputs(node) {
     if (node) {
       setEditName(node.name);
+      setEditDesc(node.description);
     } else {
       setEditName('');
+      setEditDesc('');
     }
   }
 
   function getFormInput() {
     return {
-      name: editName
+      name: editName,
+      description: editDesc
     }
   }
 
-  const handleLabelClick = (node) => {
+  function handleLabelClick(node) {
     let column = columns.find(col => col.parentId === node.parentId);
     if (column) {
       columns.splice(columns.indexOf(column), columns.length, node);
@@ -122,20 +138,20 @@ export default function TreeGrid(props) {
     setColumns([...columns]);
   }
 
-  const handleLabelAdd = (node) => {
+  function handleLabelAdd(node) {
     setParentNode(node);
     setOpenEditModal(true);
     resetFormInputs();
   }
 
-  const handleLabelEdit = (node, parent) => {
+  function handleLabelEdit(node, parent) {
     setEditNode(node);
     setParentNode(parent);
     setOpenEditModal(true);
     resetFormInputs(node);
   }
 
-  const handleLabelRemove = (node) => {
+  function handleLabelRemove(node) {
     let column = columns.find(col => col.id === node.parentId);
     if (column) {
       // remove the children from columns
@@ -149,7 +165,32 @@ export default function TreeGrid(props) {
     setColumns([...columns]);
   }
 
-  const handleEditModalInputKeydown = e => {
+  function handleLabelMove(node, parent) {
+    const { id, parentId } = node;
+    if (parent && parent.id != id && parent.id != parentId) {
+      // find the source column of the node
+      const column = columns.find(col => col.id === parentId);
+      // find the target column to move to
+      const nColumn = columns.find(col => col.id === parent.id);
+      if (column && nColumn) {
+        // remove the children from columns
+        const pcolumn = columns.find(col => col.id === node.id);
+        pcolumn && columns.splice(columns.indexOf(pcolumn), columns.length);
+
+        // remove it from parent node
+        node = column.children.find(n => n.id == node.id);
+        column.children.splice(column.children.indexOf(node), 1);
+
+        // add the node to the target column
+        node.parentId = parent.id;
+        parent.children.push(node);
+        props.onMoveNode(node.id, parent.id);
+      }
+      setColumns([...columns]);
+    }
+  }
+
+  function handleEditModalInputKeydown(e) {
     if (!openEditModal) {
       return;
     }
@@ -161,11 +202,15 @@ export default function TreeGrid(props) {
     }
   }
 
-  const handleEditModalInputChange = (e, data) => {
+  function handleEditModalInputChange(e, data) {
     setEditName(data.value.trim());
   }
 
-  const handleEditModalClose = () => {
+  function handleEditModalDescChange(e, data) {
+    setEditDesc(data.value.trim());
+  }
+
+  function handleEditModalClose() {
     setOpenEditModal(false);
     setTimeout(() => {
       setEditNode(null);
@@ -173,7 +218,7 @@ export default function TreeGrid(props) {
     }, 2000)
   }
 
-  const handleEditModalDone = () => {
+  function handleEditModalDone() {
     const parent = parentNode;
     const edit = editNode;
     if (parent && editName.length) {
@@ -186,6 +231,7 @@ export default function TreeGrid(props) {
         const newNode = getFormInput();
         edit.isNew = true;
         edit.name = newNode.name;
+        edit.description = newNode.description;
         props.onPostNode(newNode, edit.id).then(() => {
           setColumns([...columns]);
         });
@@ -218,7 +264,8 @@ export default function TreeGrid(props) {
         onLabelClick={handleLabelClick}
         onLabelRemove={handleLabelRemove}
         onLabelAdd={handleLabelAdd}
-        onLabelEdit={handleLabelEdit} />
+        onLabelEdit={handleLabelEdit}
+        onLabelMove={handleLabelMove} />
       )}
       <div className='menu-bar' style={{ padding: 0 }}>
         <Button size='medium' circular icon='sync'
@@ -243,6 +290,16 @@ export default function TreeGrid(props) {
             onChange={handleEditModalInputChange}
             onKeyDown={handleEditModalInputKeydown}
           />
+          <br />
+          <Form>
+            <TextArea
+              style={{ minHeight: 100, width: '100%' }}
+              placeholder='node description...'
+              defaultValue={editDesc}
+              onChange={handleEditModalDescChange}
+              onKeyDown={handleEditModalInputKeydown}
+            />
+          </Form>
           <Message size='tiny' color='green'>Add, edit and remove will be automatically save to local.</Message>
         </Modal.Content>
         <Modal.Actions>

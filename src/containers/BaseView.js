@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Message } from 'semantic-ui-react';
 import ErrorMessage from '../components/common/ErrorMessage';
 import ErrorModel from '../models/ErrorModel';
+import AppModel from '../models/AppModel';
 
 export default class BaseView extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ export default class BaseView extends React.Component {
     if (this.props.location !== prevProps.location) {
       this.onRouteChanged();
     }
+    document.title = this.props.title ? (`${this.props.title} - ${AppModel.appName}`) : AppModel.appName;
   }
 
   componentDidMount() {
