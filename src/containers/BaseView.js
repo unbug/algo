@@ -22,7 +22,8 @@ export default class BaseView extends React.Component {
     if (this.props.location !== prevProps.location) {
       this.onRouteChanged();
     }
-    document.title = this.props.title ? (`${this.props.title} - ${AppModel.appName}`) : AppModel.appName;
+    const name = AppModel.appName.charAt(0).toUpperCase() + AppModel.appName.slice(1);
+    document.title = this.props.title ? (`${this.props.title} - ${name}`) : name;
   }
 
   componentDidMount() {

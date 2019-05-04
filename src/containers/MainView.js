@@ -145,7 +145,7 @@ export default function MainView(props) {
   }
 
   return (
-    <BaseView title='Algo' className='main-view' {...props} fluid>
+    <BaseView className='main-view' {...props} fluid>
       <TreeGrid
         {...state}
         active={state.type === 'grid'}
