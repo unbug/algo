@@ -23,6 +23,9 @@ npm run build
 // dist
 npm run dist
 
+// release to gh-pages
+npm run gh-pages
+
 // get help
 gulp help
 ```
