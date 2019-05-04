@@ -124,6 +124,9 @@ function chart(loaded, ctx) {
     nodesEnter.append('text')
       .attr('dy', '.31em')
 
+    nodesEnter.append('title')
+      .text(d => d.data?.description || '');
+
     // combine the updated and new nodes
     let nodesUpdate = nodes.merge(nodesEnter);
 

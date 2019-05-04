@@ -116,6 +116,7 @@ export const treeToArray = (node, res = [], len) => {
     id: node.id + '',
     parentId: node.parentId === -1 ? '' : (node.parentId + ''),
     name: node.name,
+    description: node.description || ''
   });
   if (node.children) {
     node.children.slice(0, len || node.children.length).forEach(s => treeToArray(s, res, len));
