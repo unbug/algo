@@ -140,6 +140,14 @@
   border-left: 0.4rem solid #21ba45 !important;
 }
 
+.app .main-view .tree-grid__label-name:hover {
+  box-shadow: #bbbbbb 0px 2px 8px !important;
+}
+
+.app .main-view .tree-grid__label-desc {
+  white-space: pre;
+}
+
 .app .main-view .tree-grid__label-remove {
   display: none;
   float: left;
