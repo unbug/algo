@@ -1,4 +1,6 @@
-# Algorithms and Data Structures visulation
+# Tree and Radial visualization tool
+
+I create this tool to visualize my Algorithms and Data Structures notes, this tool can be used for any Tree and Radial visualization.
 
 Quick link [https://unbug.github.io/algo/](https://unbug.github.io/algo/).
 
