@@ -57,7 +57,6 @@ function TreeColumn(props) {
             trigger={
               <Label key={key.id} style={{ margin: '0.3rem 0.2rem 0 0' }} color={color} circular
                 className={`tree-grid__label-name ${key.isNew ? 'tree-grid__label-name--new' : ''} pointer-link`}
-                title={isLeaf ? '' : `Children: ${key.children.length}`}
                 onClick={() => handleLabelClick(key)}>
                 {isLeaf ? '' : <Icon name='code branch' />}
                 {key.name}
@@ -66,7 +65,7 @@ function TreeColumn(props) {
             className='tree-grid__label-popup'
             hoverable={true}
             position='right center'>
-            <div>{key.description}</div>
+            <div style={{ whiteSpace: 'pre' }}>{key.description}</div>
             {!key.description ? '' : <Divider />}
             <Button size='mini' circular icon='pencil'
               color='gray'
@@ -297,7 +296,6 @@ export default function TreeGrid(props) {
               placeholder='node description...'
               defaultValue={editDesc}
               onChange={handleEditModalDescChange}
-              onKeyDown={handleEditModalInputKeydown}
             />
           </Form>
           <Message size='tiny' color='green'>Add, edit and remove will be automatically save to local.</Message>

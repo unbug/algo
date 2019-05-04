@@ -40,6 +40,12 @@
         &--new {
           border-left: 0.4rem solid #21ba45 !important;
         }
+        &:hover {
+          box-shadow: $box-shadow;
+        }
+      }
+      &-desc {
+        white-space: pre;
       }
       &-remove {
         display: none;

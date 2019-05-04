@@ -106,7 +106,7 @@ let chart = (data, collapse) => {
       .attr('stroke', 'white');
 
     nodeEnter.append('title')
-      .text(d => `Children: ${(d._children || d.children) ?.length || 0}`);
+      .text(d => d.description || '');
 
     // Transition nodes to their new position.
     const nodeUpdate = node.merge(nodeEnter).transition(transition)
