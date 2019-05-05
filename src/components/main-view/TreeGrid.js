@@ -65,7 +65,7 @@ function TreeColumn(props) {
             className='tree-grid__label-popup'
             hoverable={true}
             position='right center'>
-            <div style={{ whiteSpace: 'pre' }}>{key.description}</div>
+            <div className='tree-grid__label-desc'>{key.description}</div>
             {!key.description ? '' : <Divider />}
             <Button size='mini' circular icon='pencil'
               color='gray'
@@ -270,10 +270,10 @@ export default function TreeGrid(props) {
         <Button size='medium' circular icon='sync'
           onClick={props.onLoadFromCloud} title='Load from cloud' />
         <Button size='medium' circular icon='save'
-          color={props.loadedFromLocal ? 'green' : (props.localAvailable ? 'red' : 'gray')}
+          color={props.loadedFromLocal ? 'green' : (props.localAvailable ? 'yellow' : 'gray')}
           onClick={props.onSaveToLocal} title='Save to local' />
         <Button size='medium' circular icon='cloud upload'
-          color={props.loadedFromLocal ? 'green' : (props.localAvailable ? 'red' : 'gray')}
+          color={props.loadedFromLocal ? 'green' : (props.localAvailable ? 'yellow' : 'gray')}
           onClick={props.onLoadFromLocal} title='Load from local' />
         <Button size='medium' circular icon='cloud download'
           onClick={props.onDownload} title='Download JSON' />

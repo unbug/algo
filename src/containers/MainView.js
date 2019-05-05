@@ -120,6 +120,7 @@ export default function MainView(props) {
   }
 
   function handleSaveToLocal() {
+    if (!window.confirm('Are you sure you to overwrite local copy with the cloud copy?')) { return; }
     MainModel.saveToLocal();
   }
 
